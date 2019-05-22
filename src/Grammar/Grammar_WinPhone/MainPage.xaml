@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Grammar_WinPhone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grammar_WinPhone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="White">
+	<Page.BottomAppBar>
+		<CommandBar x:Name="CommandBar" Background="#FFE5E5E5" Foreground="#FF3C7CBC">
+			<CommandBar.SecondaryCommands>
+				<AppBarButton x:Name="ExitAppBarButton" Label="Exit" Click="ExitAppBarButton_Click"/>
+			</CommandBar.SecondaryCommands>
+			<AppBarButton x:Name="ClearAppBarButton" Icon="Clear" Label="Clear" Click="ClearAppBarButton_Click"/>
+		</CommandBar>
+	</Page.BottomAppBar>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0">
+			<Grid x:Name="StatusGrid" Background="#FFE8B902">
+				<TextBlock x:Name="StatusTextBlock" Foreground="White" TextAlignment="Center" FontSize="22" FontWeight="SemiBold" Margin="0,15">provide a grammar</TextBlock>
+			</Grid>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+				<TextBox x:Name="LeftTextBox" MaxLength="1" Text="S" Width="auto" TextAlignment="Center" FontSize="22" FontWeight="Bold" BorderBrush="#FF8C3535" GotFocus="TextBox_GotFocus" TextChanged="TextBox_TextChanged"/>
+				<TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold">⟶</TextBlock>
+				<TextBox x:Name="RightTextBox" Text="ABC" Width="auto" TextAlignment="Center" FontSize="22" FontWeight="Bold" BorderBrush="#FF8C3535" GotFocus="TextBox_GotFocus" TextChanged="TextBox_TextChanged"/>
+			</StackPanel>
+			<Button x:Name="AddButton" Content="Add" Background="#FF3C7CBC" HorizontalAlignment="Stretch" VerticalAlignment="Center" BorderBrush="White" FontSize="24" FontWeight="Bold" Height="70" Click="AddButton_Click" BorderThickness="0"/>
+		</StackPanel>
+		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+			<StackPanel x:Name="InstructionsStackPanel" Margin="0,10,0,0">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<TextBlock Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="2">S</TextBlock>
+					<TextBlock Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="2">⟶</TextBlock>
+					<TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Margin="2">|</TextBlock>
+					<TextBlock Foreground="Black" FontSize="20" FontWeight="SemiBold" Margin="2" Tapped="Instruction_Tapped">AAA</TextBlock>
+				</StackPanel>
+			</StackPanel>
+		</ScrollViewer>
+		<Button x:Name="LambdaButton" MinWidth="20" Content="λ" Background="#FF3CA7BC" HorizontalAlignment="Right" VerticalAlignment="Top" BorderBrush="White" FontSize="24" FontWeight="Bold" Height="70" Click="LambdaButton_Click" Margin="0,59,0,0" Width="50" BorderThickness="0"/>
+	</Grid>
+</Page>
